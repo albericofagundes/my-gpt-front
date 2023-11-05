@@ -12,6 +12,7 @@ import { InputAreaComponent } from './shared/components/inputs/input-area/input-
 import { HeaderComponent } from './shared/components/header/header/header.component';
 import { FooterComponent } from './shared/components/footer/footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,13 @@ import { HttpClientModule } from '@angular/common/http';
     HeaderComponent,
     FooterComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, NgbModule, HttpClientModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    NgbModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

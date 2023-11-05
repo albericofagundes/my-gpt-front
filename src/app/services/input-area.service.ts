@@ -14,7 +14,7 @@ export class InputAreaService {
     console.log('InputAreaService prompt:', prompt);
     // const data = { prompt };
     const data = {
-      prompt: 'resumo primeiro capitulo livro eu robo',
+      prompt: `${prompt}`,
     };
 
     return this.http.post(this.API_URL, data);

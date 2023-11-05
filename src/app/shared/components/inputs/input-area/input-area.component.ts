@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { InputAreaService } from 'src/app/services/input-area.service';
 
@@ -11,14 +12,23 @@ export class InputAreaComponent {
   private subscription: Subscription = new Subscription();
   private prompt: string = '';
 
+  public formInput: FormGroup;
+
   messages: { text: string; isUser: boolean }[] = [];
   newMessage: string = '';
 
-  constructor(private inputAreaService: InputAreaService) {}
-
-  // @ViewChild('messageContainer', { static: true }) private messageContainer: ElementRef;
+  constructor(
+    private inputAreaService: InputAreaService,
+    private formBuilder: FormBuilder
+  ) {
+    this.formInput = this.formBuilder.group({
+      inputItem: [{ value: '', disabled: false }],
+    });
+  }
 
   sendMessage() {
+    this.prompt = this.formInput.value.inputItem;
+    console.log('this.prompt', this.prompt);
     this.subscription = this.inputAreaService
       .inputPrompt(this.prompt)
       .subscribe(

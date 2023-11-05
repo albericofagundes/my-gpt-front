@@ -1,7 +1,11 @@
 <div class="flex w-full items-center">
   <div class="chat-input">
-    <!-- <textarea [(ngModel)]="newMessage" (keydown.enter)="sendMessage()"></textarea> -->
-    <textarea (keydown.enter)="sendMessage()"></textarea>
+    <form [formGroup]="formInput">
+      <textarea
+        formControlName="inputItem"
+        (keydown.enter)="sendMessage()"
+      ></textarea>
+    </form>
     <button (click)="sendMessage()">Enviar</button>
   </div>
 </div>
