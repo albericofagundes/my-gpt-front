@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { InputAreaService } from 'src/app/services/input-area.service';
@@ -9,6 +9,11 @@ import { InputAreaService } from 'src/app/services/input-area.service';
   styleUrls: ['./input-area.component.css'],
 })
 export class InputAreaComponent {
+  @Output() responsePrompt: EventEmitter<{
+    question: string;
+    isUser: boolean;
+  }> = new EventEmitter();
+
   private subscription: Subscription = new Subscription();
   private prompt: string = '';
 
@@ -28,14 +33,27 @@ export class InputAreaComponent {
 
   sendMessage() {
     this.prompt = this.formInput.value.inputItem;
+
+    this.formInput.get('inputItem')?.setValue('');
+
+    this.responsePrompt.emit({ question: this.prompt, isUser: true });
+
     console.log('this.prompt', this.prompt);
     this.subscription = this.inputAreaService
       .inputPrompt(this.prompt)
       .subscribe(
         (response) => {
+          console.log('response', response);
+
           let success = response.success as boolean;
           if (success) {
-            console.log('response', response);
+            console.log('response SUCESS', response);
+            this.responsePrompt.emit({
+              question: response.data,
+              isUser: false,
+            });
+
+            // this.responsePrompt.emit(response.data);
           } else {
             console.log('error', 'response');
           }

@@ -29,6 +29,6 @@
   </div>
 
   <div class="col-12">
-    <app-input-area></app-input-area>
+    <app-input-area (responsePrompt)="handleResponse($event.question, $event.isUser)"></app-input-area>
   </div>
 </div>
