@@ -1,0 +1,34 @@
+<div class="chat-area" id="chat-area">
+  <div class="col-12">
+    <div class="chat-container flex w-full items-center">
+      <div class="chat-messages-box">
+        <div
+          *ngFor="let message of messages"
+          class="container"
+          [ngClass]="message.isUser ? 'user' : 'assistant'"
+        >
+          <span
+            class="glyphicon"
+            [ngClass]="
+              message.isUser ? 'glyphicon-user' : 'glyphicon-equalizer'
+            "
+          ></span>
+
+          <p>{{ message.text }}</p>
+          <span [ngClass]="message.isUser ? 'time-right' : 'time-left'"
+            >11:00</span
+          >
+        </div>
+      </div>
+
+      <!-- <div class="chat-input">
+        <textarea [(ngModel)]="newMessage" (keydown.enter)="sendMessage()"></textarea>
+        <button (click)="sendMessage()">Enviar</button>
+      </div> -->
+    </div>
+  </div>
+
+  <div class="col-12">
+    <app-input-area></app-input-area>
+  </div>
+</div>
