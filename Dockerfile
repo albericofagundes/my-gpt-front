@@ -13,16 +13,14 @@ RUN npm install
 # Copie os arquivos de origem da aplicação para o contêiner
 COPY . .
 
-RUN npm build
+# Execute o comando de construção
+RUN npm run build
 
-# FROM nginx:alpine
+FROM nginx:alpine
 
-# COPY --from=build /app/dist/my-gpt-front /usr/share/nginx/html
-
+# Copie os arquivos de origem da aplicação do estágio 'build' para o contêiner Nginx
+COPY --from=build /app/dist/my-gpt-front /usr/share/nginx/html
 
 EXPOSE 10000
 
-# CMD ["nginx", "-g", "daemon off;"]
-
-CMD ["npm", "start"]
-
+CMD ["nginx", "-g", "daemon off;"]
