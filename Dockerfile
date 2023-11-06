@@ -13,7 +13,7 @@ RUN npm install
 # Copie os arquivos de origem da aplicação para o contêiner
 COPY . .
 
-RUN npm run build
+RUN npm build
 
 # FROM nginx:alpine
 
