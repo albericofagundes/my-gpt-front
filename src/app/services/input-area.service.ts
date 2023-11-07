@@ -11,7 +11,7 @@ export class InputAreaService {
   constructor(private http: HttpClient) {}
 
   public inputPrompt(prompt: string): Observable<any> {
-    console.log('InputAreaService prompt:', prompt);
+
     // const data = { prompt };
     const data = {
       prompt: `${prompt}`,
