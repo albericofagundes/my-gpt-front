@@ -38,16 +38,12 @@ export class InputAreaComponent {
 
     this.responsePrompt.emit({ question: this.prompt, isUser: true });
 
-    console.log('this.prompt', this.prompt);
     this.subscription = this.inputAreaService
       .inputPrompt(this.prompt)
       .subscribe(
         (response) => {
-          console.log('response', response);
-
           let success = response.success as boolean;
           if (success) {
-            console.log('response SUCESS', response);
             this.responsePrompt.emit({
               question: response.data,
               isUser: false,
@@ -55,7 +51,6 @@ export class InputAreaComponent {
 
             // this.responsePrompt.emit(response.data);
           } else {
-            console.log('error', 'response');
           }
         },
         (error) => {

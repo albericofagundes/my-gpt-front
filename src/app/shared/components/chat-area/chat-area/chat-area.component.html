@@ -1,6 +1,6 @@
 <div class="chat-area" id="chat-area">
   <div class="col-12">
-    <div class="chat-container flex w-full items-center">
+    <div class="chat-container">
       <div class="chat-messages-box">
         <div
           *ngFor="let message of messages"
@@ -29,6 +29,8 @@
   </div>
 
   <div class="col-12">
-    <app-input-area (responsePrompt)="handleResponse($event.question, $event.isUser)"></app-input-area>
+    <app-input-area
+      (responsePrompt)="handleResponse($event.question, $event.isUser)"
+    ></app-input-area>
   </div>
 </div>

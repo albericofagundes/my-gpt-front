@@ -1,3 +1,12 @@
+.chat-container {
+  display: flex;
+  justify-content: center;
+}
+
+.chat-messages-box {
+  width: 69%;
+}
+
 .chat-messages-box > .container {
   border: 2px solid #dedede;
   background-color: #f1f1f1;

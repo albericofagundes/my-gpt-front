@@ -1,3 +1,11 @@
+.chat-input-area {
+  display: flex;
+  justify-content: center;
+}
+
+.chat-input {
+  width: 72%;
+}
 .chat-input textarea {
   max-height: 200px;
   height: 56px;
@@ -5,4 +13,5 @@
   background-color: transparent;
   width: 100%;
   color: #fff;
+  border-radius: 8px;
 }
